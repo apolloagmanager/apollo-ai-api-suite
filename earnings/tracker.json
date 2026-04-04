@@ -1,10 +1,12 @@
 {
   "totalEarned": 0,
-  "monthlyTarget": 2000,
+  "dailyTarget": 2000,
+  "monthlyTarget": 60000,
   "currency": "USD",
   "startDate": "2026-04-04",
   "entries": [],
   "wallets": {},
+  "dailyBreakdown": {},
   "monthlyBreakdown": {},
   "lastUpdated": "2026-04-04"
 }
