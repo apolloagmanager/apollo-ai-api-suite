@@ -5,10 +5,12 @@ app.use(express.json());
 // Import route files
 const statusRoutes = require('./api/status');
 const summarizeRoutes = require('./api/summarize');
+const qrRoutes = require('./api/qr');
 
 // Use routes
 app.use('/api', statusRoutes);
 app.use('/api', summarizeRoutes);
+app.use('/api', qrRoutes);
 
 // Health endpoint
 app.get('/health', (req, res) => {
