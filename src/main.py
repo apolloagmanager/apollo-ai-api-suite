@@ -8,6 +8,10 @@ app.include_router(health_check.router)
 app.include_router(text_summary.router)
 app.include_router(pdf_summary.router)  # New PDF endpoint
 
+# Add new document processing endpoint
+from . import document_processing
+app.include_router(document_processing.router)
+
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Apollo AI API Suite"}
