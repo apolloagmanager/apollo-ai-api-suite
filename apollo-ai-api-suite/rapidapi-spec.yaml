@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Apollo AI API Suite
+  description: Powerful AI endpoints for developers
+  version: 1.1.0
+  contact:
+    name: Apollo AI Team
+    url: https://apollo-ai-api-suite.onrender.com
+    email: support@apollo.ai
+servers:
+  - url: https://apollo-ai-api-suite.onrender.com
+    description: Production server
+paths:
+  /api/summarize:
+    post:
+      summary: Summarize text with various styles
+      description: Create summaries with paragraph, bullet point, or executive styles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Text to summarize
+                  minLength: 20
+                options:
+                  type: object
+                  properties:
+                    style:
+                      type: string
+                      enum: [paragraph, bullets, executive]
+                      default: paragraph
+                    length:
+                      type: string
+                      enum: [short, medium, long]
+                      default: medium
+      responses:
+        '200':
+          description: Successful summary
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  summary:
+                    type: string
+        '400':
+          description: Invalid input parameters
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
