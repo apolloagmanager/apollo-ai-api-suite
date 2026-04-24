@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+// Serve static files
+app.use(express.static('public'));
+
 // Import route files
 const statusRoutes = require('./api/status');
 const summarizeRoutes = require('./api/summarize');
@@ -19,6 +22,11 @@ app.use('/api', classifyRoutes);
 // Health endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'API operational' });
+});
+
+// Redirect root to documentation
+app.get('/', (req, res) => {
+  res.redirect('/index.html');
 });
 
 // Start server
