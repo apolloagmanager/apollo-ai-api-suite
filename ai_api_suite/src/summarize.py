@@ -1,9 +1,11 @@
-from flask import request, jsonify
+from flask import Blueprint, request, jsonify
 from transformers import pipeline
 
+summarize_route = Blueprint('summarize', __name__)
 summarizer = pipeline('summarization', model='t5-small')
 
-def summarize_route():
+@summarize_route.route('/summarize', methods=['POST'])
+def summarize():
     data = request.get_json()
     text = data.get('text', '')
     max_length = data.get('max_length', 130)
